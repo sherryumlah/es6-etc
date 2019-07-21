@@ -83,7 +83,7 @@ var obj = {
 	counter: function counter(){
 		setTimeout(function() {
 			console.log(this.id);
-		}.bind(this), 1000);
+		}.bind(this), 500);
 	}
 };
 
@@ -93,13 +93,26 @@ var obj2 = {
 	counter: function counter(){
 		setTimeout(() => {
 			console.log(this.id);
-		}, 1000);
+		}, 500);
 	}
 };
 
 obj.counter();
 obj2.counter();
 
+
+// Async / Await
+async function fAwait() {
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Promise is done!"), 6000)
+  });
+
+  let result = await promise; // will wait till the promise resolves
+  console.log(result);
+}
+
+fAwait();
+console.log("We're waiting on the promise to resolve...");
 
 // Async with Promises
 async function first(){
@@ -111,7 +124,7 @@ async function second(i){
 	return "am";
 }
 
-first().then(second).then(console.log);
+first().then(second).then(console.log); // doesn't block the code after this
 console.log("Yoda,"); // appears before "I" and "am"
 
 setTimeout(() => { 
@@ -124,4 +137,3 @@ setTimeout(() => {
 	f().then(console.log); 
 	console.log("I'm not blocked!"); // appears before returned promise in console.log
 }, 3000);
-
