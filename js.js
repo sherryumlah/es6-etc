@@ -87,7 +87,7 @@ var obj = {
 	}
 };
 
-// ES6 - anonymous function arrow syntax means it inherit's parent's this scope
+// ES6 - anonymous function arrow syntax means it inherits parent's this scope
 var obj2 = {
 	id: 43,
 	counter: function counter(){
